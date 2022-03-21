@@ -11,7 +11,7 @@ setup(
     author="Walter Haydock",
     author_email="walter@deployingsecurely.com",
     description="A quantitative cyber risk management calculator",
-    long_description=readme,
+    long_description="README.md",
     long_description_content_type="text/markdown",
     url="https://github.com/Deploying-Securely/DSRAM",
     packages=find_packages(),
