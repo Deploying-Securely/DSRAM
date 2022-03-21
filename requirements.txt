@@ -1,0 +1,9 @@
+pip
+wheel
+pandas
+numpy
+re
+datetime
+pytz
+requests
+urllib.request
