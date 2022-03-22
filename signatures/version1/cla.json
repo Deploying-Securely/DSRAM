@@ -1,3 +1,12 @@
 {
-   "signedContributors": []
+  "signedContributors": [
+    {
+      "name": "Walter-Haydock",
+      "id": 41760518,
+      "comment_id": 1074550668,
+      "created_at": "2022-03-22T00:21:28Z",
+      "repoId": 472500249,
+      "pullRequestNo": 7
+    }
+  ]
 }
