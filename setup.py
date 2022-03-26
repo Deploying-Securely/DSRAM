@@ -7,7 +7,7 @@ requirements = []
 
 setup(
     name="dsram",
-    version="0.0.4",
+    version="0.0.5",
     author="Walter Haydock",
     author_email="walter@deployingsecurely.com",
     description="A quantitative cyber risk management calculator",
@@ -16,5 +16,5 @@ setup(
     url="https://github.com/Deploying-Securely/DSRAM",
     packages=find_packages(),
     install_requires=requirements,
-    classifiers=[],
+    classifiers=[License :: OSI Approved :: Apache Software License],
 )
