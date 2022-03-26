@@ -16,5 +16,5 @@ setup(
     url="https://github.com/Deploying-Securely/DSRAM",
     packages=find_packages(),
     install_requires=requirements,
-    classifiers=[License :: OSI Approved :: Apache Software License],
+    classifiers=['License :: OSI Approved :: Apache Software License'],
 )
