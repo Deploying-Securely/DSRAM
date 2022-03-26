@@ -7,7 +7,7 @@ requirements = []
 
 setup(
     name="dsram",
-    version="0.0.5",
+    version="0.0.6",
     author="Walter Haydock",
     author_email="walter@deployingsecurely.com",
     description="A quantitative cyber risk management calculator",
