@@ -109,3 +109,44 @@ def epss_365_day_from_epss_30_day(cve_age, epss_30_day):
     epss_365_day = epss_365_day + marginal_epss
   
   return epss_365_day
+
+def non_cve_exploitability_score(user_interaction, privileges_required, attack_vector):
+  if user_interaction:
+    if privileges_required:
+      if attack_vector == "adjacent_network":
+        exploitability_score = float(0.009125)
+      if attack_vector == "physical":
+        exploitability_score = float(0.009484)
+      if attack_vector == "network":
+        exploitability_score = float(0.011233)
+      if attack_vector == "local":
+        exploitability_score = float(0.011900)
+    if not privileges_required:
+      if attack_vector == "adjacent_network":
+        exploitability_score = float(0.020369)
+      if attack_vector == "physical":
+        exploitability_score = float(0.009634)
+      if attack_vector == "network":
+        exploitability_score = float(0.028147)
+      if attack_vector == "local":
+        exploitability_score = float(0.020971)
+  if not user_interaction:
+    if privileges_required:
+      if attack_vector == "adjacent_network":
+        exploitability_score = float(0.017078)
+      if attack_vector == "physical":
+        exploitability_score = float(0.012106)
+      if attack_vector == "network":
+        exploitability_score = float(0.020974)
+      if attack_vector == "local":
+        exploitability_score = float(0.011861)
+    if not privileges_required:
+      if attack_vector == "adjacent_network":
+        exploitability_score = float(0.029069)
+      if attack_vector == "physical":
+        exploitability_score = float(0.010787)
+      if attack_vector == "network":
+        exploitability_score = float(0.028147)
+      if attack_vector == "local":
+        exploitability_score = float(0.011424)  
+  
