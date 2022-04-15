@@ -148,5 +148,6 @@ def non_cve_exploitability_score(user_interaction, privileges_required, attack_v
       if attack_vector == "network":
         exploitability_score = float(0.028147)
       if attack_vector == "local":
-        exploitability_score = float(0.011424)  
+        exploitability_score = float(0.011424)
   
+  return exploitability_score
