@@ -88,8 +88,8 @@ def get_nvd_data(list_of_years):
   return df_cves
 
 def epss_365_day_from_epss_30_day(cve_age, epss_30_day):
-  epss_365 = float(1) - (float(1) - epss_30) ** (float(365.25) / float(30))
-  return epss_365
+  epss_365_day = float(1) - (float(1) - epss_30_day) ** (float(365.25) / float(30))
+  return epss_365_day
 
 def non_cve_exploitability_score(user_interaction, privileges_required, attack_vector):
   if user_interaction:
