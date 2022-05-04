@@ -88,27 +88,8 @@ def get_nvd_data(list_of_years):
   return df_cves
 
 def epss_365_day_from_epss_30_day(cve_age, epss_30_day):
-  # This is VERY ROUGH, but essentially I developed an "exploitation curve" function to predict the likelihood of exploitation over time of a given vulnerability
-  # According to Mandiant (https://www.mandiant.com/resources/time-between-disclosure-patch-release-and-vulnerability-exploitation), of all known vulnerabilities that are exploited,
-  # 1/3 are exploited in the first week of identification, 
-  # 1/3 are exploited in the subsequent month (but excluding the first week),
-  # and the remaining 1/3 are exploited after one month of identification.
-  # This roughly corresponds to a function for risk_of_exploitation = .05 ^ (.025 * CVE age)
-  
-  def exploitation_curve(cve_age):
-      exploitation_curve = 0.05**(0.025 * float(cve_age))
-      return exploitation_curve
-  
-  months = [1,2,3,4,5,6,7,8,9,10,11]
-  epss_365_day = epss_30_day # setting these equal before beginning the for loop
-  
-  for month in months:
-    days = cve_age + (month * (365.25/12)) # This is the age of the cve (today) plus the number of days in a year divided by the number of months in a year
-    ### Using this formula, and the CVE's age, I will predict the EPSS for each subsequent month (after the 30 day period)
-    marginal_epss = (exploitation_curve(days) * epss_30_day)
-    epss_365_day = epss_365_day + marginal_epss
-  
-  return epss_365_day
+  epss_365 = float(1) - (float(1) - epss_30) ** (float(365.25) / float(30))
+  return epss_365
 
 def non_cve_exploitability_score(user_interaction, privileges_required, attack_vector):
   if user_interaction:
