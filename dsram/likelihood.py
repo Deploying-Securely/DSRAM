@@ -104,6 +104,7 @@ def epss_365_day_from_epss_30_day(cve_age, epss_30_day):
   # The below formaula annualizes the 30 day likelihood of exploitation, in accordance with https://math.stackexchange.com/questions/490859/calculating-probabilities-over-longer-period-of-time
   # Instead of taking 1 - probability of exploitation to the 12th power, however, I adjusted each monthly exploitation by the exploitation curve function.
   epss_365_day = float(1) - ((float(1) - epss_30_day) *\
+                             (float(1) - epss_30_day * exploitation_curve(cve_age + average_days_per_month)) *\
                              (float(1) - epss_30_day * exploitation_curve(cve_age + (2 * average_days_per_month))) *\
                              (float(1) - epss_30_day * exploitation_curve(cve_age + (3 * average_days_per_month))) *\
                              (float(1) - epss_30_day * exploitation_curve(cve_age + (4 * average_days_per_month))) *\
