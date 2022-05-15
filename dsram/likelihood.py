@@ -88,7 +88,33 @@ def get_nvd_data(list_of_years):
   return df_cves
 
 def epss_365_day_from_epss_30_day(cve_age, epss_30_day):
-  epss_365_day = float(1) - (float(1) - epss_30_day) ** (float(365.25) / float(30))
+  # This is VERY ROUGH, but essentially I developed an "exploitation curve" function to predict the likelihood of exploitation over time of a given vulnerability
+  # According to Mandiant (https://www.mandiant.com/resources/time-between-disclosure-patch-release-and-vulnerability-exploitation), of all known vulnerabilities that are exploited,
+  # 1/3 are exploited in the first week of identification, 
+  # 1/3 are exploited in the subsequent month (but excluding the first week),
+  # and the remaining 1/3 are exploited after one month of identification.
+  # This roughly corresponds to a function for risk_of_exploitation = .05 ^ (.0125 * CVE age in days)
+
+  def exploitation_curve(cve_age):
+      exploitation_curve_factor = 0.05**(0.0125 * float(cve_age))
+      return exploitation_curve_factor
+  
+  average_days_per_month = float(365.25) / float(12)
+
+  # The below formaula annualizes the 30 day likelihood of exploitation, in accordance with https://math.stackexchange.com/questions/490859/calculating-probabilities-over-longer-period-of-time
+  # Instead of taking 1 - probability of exploitation to the 12th power, however, I adjusted each monthly exploitation by the exploitation curve function.
+  epss_365_day = float(1) - ((float(1) - epss_30_day) *\
+                             (float(1) - epss_30_day * exploitation_curve(cve_age + (2 * average_days_per_month))) *\
+                             (float(1) - epss_30_day * exploitation_curve(cve_age + (3 * average_days_per_month))) *\
+                             (float(1) - epss_30_day * exploitation_curve(cve_age + (4 * average_days_per_month))) *\
+                             (float(1) - epss_30_day * exploitation_curve(cve_age + (5 * average_days_per_month))) *\
+                             (float(1) - epss_30_day * exploitation_curve(cve_age + (6 * average_days_per_month))) *\
+                             (float(1) - epss_30_day * exploitation_curve(cve_age + (7 * average_days_per_month))) *\
+                             (float(1) - epss_30_day * exploitation_curve(cve_age + (8 * average_days_per_month))) *\
+                             (float(1) - epss_30_day * exploitation_curve(cve_age + (9 * average_days_per_month))) *\
+                             (float(1) - epss_30_day * exploitation_curve(cve_age + (10 * average_days_per_month))) *\
+                             (float(1) - epss_30_day * exploitation_curve(cve_age + (11 * average_days_per_month))))
+
   return epss_365_day
 
 def non_cve_exploitability_score(user_interaction, privileges_required, attack_vector):
