@@ -1,5 +1,5 @@
 # DSRAM
-Deploying Securely Risk Assessment Model
+Deploy Securely Risk Assessment Model
 
 The purpose of the DSRAM (working title/acronym) is to allow information security professionals to evaluate the financial risk posed by individual vulnerabilities in a simple and, potentially, automated, manner.
 
