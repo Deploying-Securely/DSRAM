@@ -1,4 +1,4 @@
-### Deploying Securely Individual Contributor License Agreement (CLA)
+### Deploy Securely Individual Contributor License Agreement (CLA)
 
 Thank you for your interest in contributing to open source software projects (“Projects”) made available by Walter H. Haydock (“Owner”).
 This Individual Contributor License Agreement (“Agreement”) sets out the terms governing any source code, object code, bug fixes, configuration
