@@ -9,4 +9,4 @@ The likelihood module is built around the open-source Exploit Prediction Scoring
 
 The severity module helps to calculate the loss from the exploitation of a given vulnerability, using the confidentiality, integrity, and availability (CIA) triad. For considerations on what to consider when inputing the various values, please see https://haydock.substack.com/p/the-deploying-securely-risk-assessment.
 
-Finally, an interactive calculator implementing the modules is available via Google Colab: https://colab.research.google.com/drive/1q-04x9zgO9Nh5ap1XmkMJfwm-ahaqkce?usp=sharing.
+Finally, an interactive calculator implementing the modules is available via Google Colab: https://colab.research.google.com/drive/1q-04x9zgO9Nh5ap1XmkMJfwm-ahaqkce?usp=sharing. 
